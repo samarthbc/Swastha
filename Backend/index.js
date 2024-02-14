@@ -26,7 +26,7 @@ app.options('*', cors());
 // To fix "No 'Access-Control-Allow-Origin' header is present on the requested resource"
 app.use((req,res,next)=>{
   console.log("Something is happening")
-  res.setHeader("Access-Control-Allow-Origin", "https://swastha.vercel.app");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Origin", "POST, GET, DELETE, PUT");
   res.setHeader("Access-Control-Allow-Origin", "Content-Type");
   next();
