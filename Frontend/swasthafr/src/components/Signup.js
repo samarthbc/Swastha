@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import urlcontext from '../context/urlcontext'
 
 function Signup() {
+
+    const context = useContext(urlcontext)
+    const {server_url} = context
 
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
     const navigate = useNavigate()
@@ -14,7 +18,7 @@ function Signup() {
             let selectedValue = document.querySelector('input[name="flexRadioDefault"]:checked').value
             if (selectedValue === "member") {
 
-                const response = await fetch("http://localhost:5000/api/auth/createuser", {
+                const response = await fetch(`${server_url}/api/auth/createuser`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -40,7 +44,7 @@ function Signup() {
 
             if (selectedValue === "doctor") {
 
-                const response = await fetch("http://localhost:5000/api/docauth/createdoc", {
+                const response = await fetch(`${server_url}/api/docauth/createdoc`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

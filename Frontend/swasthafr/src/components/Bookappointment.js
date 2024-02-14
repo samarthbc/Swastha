@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import urlcontext from '../context/urlcontext'
 
 
 function Bookappointment() {
+    
+    const context = useContext(urlcontext)
+    const {server_url} = context
+
     const [doc, setDoc] = useState([])
     const [appointment, setAppointment] = useState([])
 
@@ -12,7 +17,7 @@ function Bookappointment() {
     const getdocdetails = async () => {
         console.log(id)
 
-        let response = await fetch(`http://localhost:5000/api/docauth/getdocwithid/${id}`)
+        let response = await fetch(`${server_url}/api/docauth/getdocwithid/${id}`)
         let parsedDoc = await response.json()
         setDoc(parsedDoc)
     }
@@ -38,7 +43,7 @@ function Bookappointment() {
 
     const handleBookAppointmet = async(e) => {
 
-        let response = await fetch(`http://localhost:5000/api/appointment/new`, {
+        let response = await fetch(`${server_url}/api/appointment/new`, {
             method: "POST",
             headers: {
                 'Content-Type':'application/json',

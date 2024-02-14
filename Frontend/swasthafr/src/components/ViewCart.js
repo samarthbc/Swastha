@@ -1,7 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import cartContext from '../context/cartcontext'
+import urlcontext from '../context/urlcontext'
 
 function ViewCart(props) {
+    
+    const contexturl = useContext(urlcontext)
+    const {server_url} = contexturl
+
     const context = useContext(cartContext)
     const { cart, addItemInCart, setCart } = context
 
@@ -22,7 +27,7 @@ function ViewCart(props) {
     }
 
     const getByItem = async (id) => {
-        let response = await fetch("http://localhost:5000/api/shopitem/getone", {
+        let response = await fetch(`${server_url}/api/shopitem/getone`, {
             method: "POST",
             headers: {
                 'Content-Type': "application/json"

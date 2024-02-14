@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import urlcontext from '../context/urlcontext'
 
 function Appointments() {
+    
+    const context = useContext(urlcontext)
+    const {server_url} = context
+
 
     const Navigate = useNavigate()
     const [allappointments, setAllappointments] = useState([])
@@ -12,7 +17,7 @@ function Appointments() {
             if (localStorage.getItem("account-type") === "member") {
                 console.log("member")
 
-                let response = await fetch(`http://localhost:5000/api/appointment/getappointmentuser`, {
+                let response = await fetch(`${server_url}/api/appointment/getappointmentuser`, {
                     method: "POST",
                     headers: {
                         'auth-token': localStorage.getItem('token')
@@ -24,7 +29,7 @@ function Appointments() {
             else {
                 console.log("doctor")
 
-                let response = await fetch(`http://localhost:5000/api/appointment/getappointmentdoc`, {
+                let response = await fetch(`${server_url}/api/appointment/getappointmentdoc`, {
                     method: "POST",
                     headers: {
                         'auth-token': localStorage.getItem('token')
@@ -64,7 +69,7 @@ function Appointments() {
                                 <h5 className='mt-3'>Doctor: </h5>
                                 <span>Name: {element.doctor.name}</span>
                                 <span>Contact: {element.doctor.email}</span>
-                                <img src={`http://localhost:5000/${element.doctor.profileimg}`} alt="..." className='img-fluid rounded-circle' style={{ "width": "8vw", height: "8vw" }} />
+                                <img src={`${server_url}/${element.doctor.profileimg}`} alt="..." className='img-fluid rounded-circle' style={{ "width": "8vw", height: "8vw" }} />
                                 <span className='mt-3'>Description:</span>
                                 <span>{element.description}</span>
                             </div>
@@ -89,7 +94,7 @@ function Appointments() {
                                 <span>Contact: {element.user.email}</span>
                                 <span>Age: {element.user.age}</span>
                                 <span>Gender: {element.user.gender}</span>
-                                <img src={`http://localhost:5000/${element.user.profileimg}`} alt="..." className='img-fluid rounded-circle' style={{ "width": "8vw", height: "8vw" }} />
+                                <img src={`${server_url}/${element.user.profileimg}`} alt="..." className='img-fluid rounded-circle' style={{ "width": "8vw", height: "8vw" }} />
                                 <span className='mt-3'>Reason for Appointment:</span>
                                 <span>{element.description}</span>
                             </div>

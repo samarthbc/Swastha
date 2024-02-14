@@ -27,38 +27,41 @@ import AddItem from './components/AddItem';
 import ViewCart from './components/ViewCart';
 import CartState from './context/CartState';
 import Item from './components/Item';
+import UrlState from './context/UrlState';
 
 // Setting up links to endpoints
 function App() {
   return (
     <>
-    <CartState>
-      <Router>
-        <Navbar /> 
-        <SubNavbar /> 
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/services" element={<Services/>}/>
-          <Route path="/specialisations" element={<Specialisations/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/editprofile" element={<EditProfile/>}/>
-          <Route path="/doctors" element={<Doctors/>}/>
-          <Route path="/bookappointment/:id" element={<Bookappointment/>}/>
-          <Route path="/appointments" element={<Appointments/>}/>
-          <Route path="/report" element={<Report/>}/>
-          <Route path="/news" element={<News/>}/>
-          <Route path="/blog" element={<Blog/>}/>
-          <Route path="/blogitem/:id" element={<Blogitem/>}/>
-          <Route path="/createblog" element={<Createblog/>}/>
-          <Route path="/store" element={<Store/>}/>
-          <Route path="/additem" element={<AddItem/>}/>
-          <Route path="/viewcart" element={<ViewCart/>}/>
-          <Route path="/item/:id" element={<Item/>}/>
-          <Route path="/donate" element={<Donate/>}/>
-        </Routes>
-        {/* <Footer /> */}
-      </Router>
+      <CartState>
+        <UrlState>
+          <Router>
+            <Navbar />
+            <SubNavbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/specialisations" element={<Specialisations />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/editprofile" element={<EditProfile />} />
+              <Route path="/doctors" element={<Doctors />} />
+              <Route path="/bookappointment/:id" element={<Bookappointment />} />
+              <Route path="/appointments" element={<Appointments />} />
+              <Route path="/report" element={<Report />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blogitem/:id" element={<Blogitem />} />
+              <Route path="/createblog" element={<Createblog />} />
+              <Route path="/store" element={<Store />} />
+              <Route path="/additem" element={<AddItem />} />
+              <Route path="/viewcart" element={<ViewCart />} />
+              <Route path="/item/:id" element={<Item />} />
+              <Route path="/donate" element={<Donate />} />
+            </Routes>
+            {/* <Footer /> */}
+          </Router>
+        </UrlState>
       </CartState>
     </>
   );

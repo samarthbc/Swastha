@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import StoreItem from './StoreItem'
+import urlcontext from '../context/urlcontext'
 
 function Store() {
+  
+  const context = useContext(urlcontext)
+  const {server_url} = context
+
 
   const [allitems, setAllitems] = useState([])
   const Navigate = useNavigate()
@@ -11,7 +16,7 @@ function Store() {
   }
 
   const getallitems = async() => {
-    let response = await fetch("http://localhost:5000/api/shopitem/getall")
+    let response = await fetch(`${server_url}/api/shopitem/getall`)
     let parsedResponse = await response.json()
     setAllitems(parsedResponse)
   }

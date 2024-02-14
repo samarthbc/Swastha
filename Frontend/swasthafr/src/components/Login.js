@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Login.css';
+import urlcontext from '../context/urlcontext';
 
 function Login() {
+    
+    const context = useContext(urlcontext)
+    const {server_url} = context
+
 
     const navigate = useNavigate()
     const [credentials, setCredentials] = useState({ email: "", password: "" })
@@ -15,7 +20,7 @@ function Login() {
 
         if (selectedValue === "member") {
 
-            const response = await fetch("http://localhost:5000/api/auth/login", {
+            const response = await fetch(`${server_url}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -39,7 +44,7 @@ function Login() {
         }
         else {
 
-            const response = await fetch("http://localhost:5000/api/docauth/login", {
+            const response = await fetch(`${server_url}/api/docauth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

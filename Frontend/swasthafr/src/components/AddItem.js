@@ -1,7 +1,13 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import urlcontext from '../context/urlcontext'
 
 function AddItem() {
+    
+    const context = useContext(urlcontext)
+    const {server_url} = context
+
 
     const Navigate = useNavigate()
     const [item, setItem] = useState([])
@@ -10,7 +16,7 @@ function AddItem() {
     const handleAddItem = async(e) => {
         e.preventDefault()
         
-        let response = await fetch("http://localhost:5000/api/shopitem/createitem",{
+        let response = await fetch(`${server_url}/api/shopitem/createitem`,{
             method:"POST",
             headers:{
                 'Content-Type':'application/json'
@@ -26,7 +32,7 @@ function AddItem() {
         let formData = new FormData()
         formData.append('file',itemfile)
 
-        await fetch(`http://localhost:5000/api/shopitem/updateimg/${itemId}`,{
+        await fetch(`${server_url}/api/shopitem/updateimg/${itemId}`,{
             method:"POST",
             body: formData
         })

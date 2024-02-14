@@ -1,9 +1,14 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect, useContext} from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import urlcontext from '../context/urlcontext'
 
 
 
 const Navbar = () => {
+    
+    const context = useContext(urlcontext)
+    const {server_url} = context
+
 
     let location = useLocation();
     let navigate = useNavigate();
@@ -30,7 +35,7 @@ const Navbar = () => {
     const getpfpimg = async() =>{
 
         if(localStorage.getItem('account-type')=='member'){
-            let response = await fetch("http://localhost:5000/api/auth/getuser",{
+            let response = await fetch(`${server_url}/api/auth/getuser`,{
                 method:"POST",
                 headers:{
                     'auth-token':localStorage.getItem('token')
@@ -40,7 +45,7 @@ const Navbar = () => {
             setUserdet(parsedResponse)
         }
         else{
-            let response = await fetch("http://localhost:5000/api/docauth/getdoc",{
+            let response = await fetch(`${server_url}/api/docauth/getdoc`,{
                 method:"POST",
                 headers:{
                     'auth-token':localStorage.getItem('token')
@@ -92,7 +97,7 @@ const Navbar = () => {
 
                         {localStorage.getItem('token') ?
                             <div>
-                                <img className='rounded-circle img-fluid' style={{ width: "35px", height: "35px" }} src={`http://localhost:5000/${userdet.profileimg}`} alt="" />
+                                <img className='rounded-circle img-fluid' style={{ width: "35px", height: "35px" }} src={`${server_url}/${userdet.profileimg}`} alt="" />
 
                                 <div className="dropdown" style={{display:"inline-block"}}>
                                     <button className="btn btn-warning" style={{padding:"0px"}} data-bs-toggle="dropdown" aria-expanded="false">

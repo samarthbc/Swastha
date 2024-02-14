@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Createblog.css';
+import urlcontext from '../context/urlcontext';
 
 function Createblog() {
+    
+    const context = useContext(urlcontext)
+    const {server_url} = context
+
 
     const [blogdet, setBlogdet] = useState([])
     const Navigate = useNavigate();
@@ -10,7 +15,7 @@ function Createblog() {
     const createblog = async (e) => {
         e.preventDefault()
 
-        const response = await fetch("http://localhost:5000/api/blog/createblog", {
+        const response = await fetch(`${server_url}/api/blog/createblog`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import urlcontext from '../context/urlcontext'
 
 
 function EditProfile() {
+    
+    const context = useContext(urlcontext)
+    const {server_url} = context
+
 
     const Navigate = useNavigate()
     const [userdetails, setUserdetails] = useState([])
@@ -11,7 +16,7 @@ function EditProfile() {
     const fetchcurrent = async () => {
         if (localStorage.getItem('account-type') === 'member') {
 
-            const response = await fetch(`http://localhost:5000/api/auth/getuser`, {
+            const response = await fetch(`${server_url}/api/auth/getuser`, {
                 method: "POST",
                 headers: {
                     "auth-token": localStorage.getItem('token')
@@ -22,7 +27,7 @@ function EditProfile() {
         }
         else {
 
-            const response = await fetch(`http://localhost:5000/api/docauth/getdoc`, {
+            const response = await fetch(`${server_url}/api/docauth/getdoc`, {
                 method: "POST",
                 headers: {
                     "auth-token": localStorage.getItem('token')
@@ -49,7 +54,7 @@ function EditProfile() {
         e.preventDefault()
 
         if (localStorage.getItem("account-type") === "member") {
-            let updateprofile = await fetch("http://localhost:5000/api/auth/updateuser", {
+            let updateprofile = await fetch(`${server_url}/api/auth/updateuser`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -60,7 +65,7 @@ function EditProfile() {
 
             const formData = new FormData()
             formData.append('file', file)
-            let response = await fetch("http://localhost:5000/api/auth/updateuserimg", {
+            let response = await fetch(`${server_url}/api/auth/updateuserimg`, {
                 method: "POST",
                 headers: {
                     'auth-token': localStorage.getItem('token')
@@ -71,7 +76,7 @@ function EditProfile() {
             Navigate('/editprofile')
         }
         else {
-            let updateprofile = await fetch("http://localhost:5000/api/docauth/updatedoc", {
+            let updateprofile = await fetch(`${server_url}/api/docauth/updatedoc`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,7 +87,7 @@ function EditProfile() {
 
             const formData = new FormData()
             formData.append('file', file)
-            let response = await fetch("http://localhost:5000/api/docauth/updatedocimg", {
+            let response = await fetch(`${server_url}/api/docauth/updatedocimg`, {
                 method: "POST",
                 headers: {
                     'auth-token': localStorage.getItem('token')
@@ -103,7 +108,7 @@ function EditProfile() {
                         <h3 className="text-danger text-center mt-4 nb-check" style={{ fontFamily: "'Caveat', cursive", fontWeight: "bolder", fontSize: "40px" }}>Edit Profile</h3>
 
                         <label htmlFor="pfpimg">Your profile picture:</label>
-                        <img className="rounded-circle" src={`http://localhost:5000/${userdetails.profileimg}`} alt="image not loaded" style={{height:"20vw", width:"20vw"}}/>
+                        <img className="rounded-circle" src={`${server_url}/${userdetails.profileimg}`} alt="image not loaded" style={{height:"20vw", width:"20vw"}}/>
 
                         <label htmlFor="pfpimg">Edit profile picture:</label>
                         <input type="file" name="profileimg" id="pfpimg" className='form-control' style={{ width: "50vw" }} onChange={handleImgChange} />
@@ -140,7 +145,7 @@ function EditProfile() {
                         <h3 className="text-danger text-center mt-4 nb-check" style={{ fontFamily: "'Caveat', cursive", fontWeight: "bolder", fontSize: "40px" }}>Edit Profile</h3>
 
                         <label htmlFor="pfpimg">Your profile picture:</label>
-                        <img className="rounded-circle" src={`http://localhost:5000/${userdetails.profileimg}`} alt="image not loaded" style={{height:"20vw", width:"20vw"}}/>
+                        <img className="rounded-circle" src={`${server_url}/${userdetails.profileimg}`} alt="image not loaded" style={{height:"20vw", width:"20vw"}}/>
 
                         <label htmlFor="pfpimg">Edit profile picture:</label>
                         <input type="file" name="profileimg" id="pfpimg" className='form-control' style={{ width: "50vw" }} onChange={handleImgChange} />

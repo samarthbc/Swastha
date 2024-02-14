@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import urlcontext from '../context/urlcontext'
 
 
 function Blog() {
+    
+    const context = useContext(urlcontext)
+    const {server_url} = context
+
     const Navigate = useNavigate()
 
     const createblog = (e) => {
@@ -17,7 +22,7 @@ function Blog() {
     const [blogs, setBlogs] = useState([])
 
     const loadBlogs = async () => {
-        let data = await fetch("http://localhost:5000/api/blog/getall")
+        let data = await fetch(`${server_url}/api/blog/getall`)
         let parsedData = await data.json()
         setBlogs(parsedData)
     }

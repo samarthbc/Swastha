@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
+import urlcontext from '../context/urlcontext'
 
 function Blogitem() {
+    
+    const context = useContext(urlcontext)
+    const {server_url} = context
+
 
     const [blog, setBlog] = useState([]);
     const { id } = useParams();
 
     const loadBlog = async () => {
-        let response = await fetch(`http://localhost:5000/api/blog/getblog/${id}`)
+        let response = await fetch(`${server_url}/api/blog/getblog/${id}`)
         let parsedBlog = await response.json();
         setBlog(parsedBlog)
     }

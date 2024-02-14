@@ -1,8 +1,13 @@
 import React, {useContext, useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import cartContext from '../context/cartcontext'
+import urlcontext from '../context/urlcontext'
 
 function StoreItem(props) {
+    
+    const contexturl = useContext(urlcontext)
+    const {server_url} = contexturl
+
     const [qnty,setQnty] = useState(0)
 
     const context = useContext(cartContext)
@@ -27,7 +32,7 @@ function StoreItem(props) {
     return (
         <>
             <div className="card border border-rounded border-success" style={{ width: "18rem" }}>
-                <img src={`http://localhost:5000/${itemImg}`} className="card-img-top" alt="..." style={{ width: "17.9rem", height: "16rem" }} />
+                <img src={`${server_url}/${itemImg}`} className="card-img-top" alt="..." style={{ width: "17.9rem", height: "16rem" }} />
                 <div className="card-body d-flex flex-column justify-content-center align-items-center">
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text">{description}</p>
