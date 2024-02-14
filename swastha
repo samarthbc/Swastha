@@ -1,0 +1,43 @@
+All the I should inclde in home page
+
+Aim, Goals, Moto
+Achievements
+Social connections
+Branches
+Reviews
+Footer
+
+Colour theme: #FFC107
+
+News API
+https://newsapi.org/v2/everything?q=health&apiKey=a7742701b0824034b7519ea4cd424fe8
+
+Sample API response
+
+{"status":"ok","totalResults":1,"articles":[{"source":{"id":null,"name":"Hindustan Times"},"author":"Zarafshan Shiraz","title":"Cervical cancer: Causes, signs, prevention tips and more about HPV infection - Hindustan Times","description":"HPV is behind 95% of the cases of cervical cancer, the 2nd cause of death from cancer in females in India. Here's all about its causes, symptoms, prevention etc | Health","url":"https://www.hindustantimes.com/lifestyle/health/cervical-cancer-causes-symptoms-prevention-tips-and-everything-you-need-to-know-about-hpv-infection-101706962871023.html","urlToImage":"https://www.hindustantimes.com/ht-img/img/2024/02/03/1600x900/_0d9826ba-9c67-11e7-a38e-8ee9fe2ac8e7_1706963158360.jpg","publishedAt":"2024-02-03T12:42:12Z","content":"January is marked as cervical cancer awareness month but Bollywood actor and model Poonam Pandey's death hoax has once again brought the deadly disease into spotlight where beneath the surface lies a… [+4661 chars]"}]}
+
+
+status
+totalResults
+articles
+    source
+        id
+        name
+    author
+    title
+    description
+    url
+    urlToImage
+    publishedAt
+    content
+
+
+THE CARD
+
+LEFT: urlToImage
+title
+author
+source name
+description
+publishedAt
+url (read more href)

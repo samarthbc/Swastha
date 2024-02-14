@@ -1,0 +1,56 @@
+#carouselExampleRide{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+}
+
+.carousel-inner,
+.carousal-item{
+    height: 100%;
+}
+
+#imgswastha{
+    max-width: 50%;
+    height: auto;
+}
+
+#Mission{
+    margin-top: 100vh;
+}
+
+.nb-fheading{
+    font-family: 'Love Light', cursive;
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.nb-fpara{
+    font-family: 'Noto Serif', serif;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.custom-shape-divider-bottom-1707060334 {
+    /* position: absolute;
+    bottom: 0;
+    left: 0; */
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1707060334 svg {
+    position: relative;
+    display: block;
+    width: calc(134% + 1.3px);
+    height: 113px;
+}
+
+.custom-shape-divider-bottom-1707060334 .shape-fill {
+    fill: #FCDB7A;
+}
+
+#Achievements{
+    background-color: #FCDB7A;
+}
