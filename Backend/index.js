@@ -29,6 +29,10 @@ app.use('/api/appointment', require('./routes/appointment'))
 app.use('/api/blog', require('./routes/blog'))
 app.use('/api/shopitem', require('./routes/shopitem'))
 
+// '/' of backend (testing purposes)
+app.get("/",(req,res)=>{
+  res.json("Swastha Backend running.....")
+})
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
