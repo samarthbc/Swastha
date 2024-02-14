@@ -21,7 +21,7 @@ app.use(cors(
   }
 ))
 // Enable CORS for all OPTIONS requests
-// app.options('*', cors()); 
+app.options('*', cors()); 
 
 
 // Setting up public as a static folder
