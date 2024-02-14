@@ -23,6 +23,14 @@ app.use(cors(
 // Enable CORS for all OPTIONS requests
 app.options('*', cors()); 
 
+// To fix "No 'Access-Control-Allow-Origin' header is present on the requested resource"
+app.use((req,res,next)=>{
+  res.setHeader("Access-Control-Allow-Origin", "https://swastha.vercel.app");
+  res.setHeader("Access-Control-Allow-Origin", "POST, GET, DELETE, PUT");
+  res.setHeader("Access-Control-Allow-Origin", "Content-Type");
+  next();
+})
+
 
 // Setting up public as a static folder
 app.use(express.static(path.join(__dirname,'public')))
