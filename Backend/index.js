@@ -13,13 +13,7 @@ const port = 5000
 // app.use(express.json)
 
 // Enabling cors for all routes
-app.use(cors(
-  {
-    origin: ["https://swastha.vercel.app"],
-    methods: ["POST","GET","DELETE","PUT"],
-    credentials:true
-  }
-))
+app.use(cors())
 // Enable CORS for all OPTIONS requests
 app.options('*', cors()); 
 
@@ -29,6 +23,7 @@ app.use((req,res,next)=>{
   res.setHeader("Access-Control-Allow-Origin", "https://swastha.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", true)
   next();
 })
 
