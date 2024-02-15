@@ -18,14 +18,14 @@ app.use(cors())
 app.options('*', cors()); 
 
 // To fix "No 'Access-Control-Allow-Origin' header is present on the requested resource"
-app.use((req,res,next)=>{
-  console.log("Something is happening")
-  res.setHeader("Access-Control-Allow-Origin", "https://swastha.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.setHeader("Access-Control-Allow-Credentials", true)
-  next();
-})
+// app.use((req,res,next)=>{
+//   console.log("Something is happening")
+//   res.setHeader("Access-Control-Allow-Origin", "https://swastha.vercel.app");
+//   res.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//   res.setHeader("Access-Control-Allow-Credentials", true)
+//   next();
+// })
 
 
 // Setting up public as a static folder
