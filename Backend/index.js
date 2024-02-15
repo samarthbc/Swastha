@@ -15,7 +15,7 @@ const port = 5000
 // Enabling cors for all routes
 app.use(cors(
   {
-    origin: ["https://swastha.vercel.app"],
+    origin: ["https://swastha.vercel.app/"],
     methods: ["POST","GET","DELETE","PUT"],
     credentials:true
   }
