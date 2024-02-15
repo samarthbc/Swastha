@@ -15,7 +15,7 @@ const port = 5000
 // Enabling cors for all routes
 app.use(cors(
   {
-    origin: ["https://swastha.vercel.app","https://localhost:3000"],
+    origin: ["https://swastha.vercel.app"],
     methods: ["POST","GET","DELETE","PUT"],
     credentials:true
   }
@@ -26,9 +26,9 @@ app.options('*', cors());
 // To fix "No 'Access-Control-Allow-Origin' header is present on the requested resource"
 app.use((req,res,next)=>{
   console.log("Something is happening")
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Origin", "POST, GET, DELETE, PUT");
-  res.setHeader("Access-Control-Allow-Origin", "Content-Type");
+  res.setHeader("Access-Control-Allow-Origin", "https://swastha.vercel.app");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
 })
 
@@ -50,5 +50,5 @@ app.get("/",(req,res)=>{
 })
 
 app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`)
+  console.log(`Listening at https://swasthaserver.vercel.app`)
 })
