@@ -28,7 +28,7 @@ Swastha is an online platform that bridges the gap between doctors and patients,
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/unknownalien1/swastha.git
+   git clone https://github.com/samarthbc/swastha.git
    ```
 2. Navigate to the project directory:
    ```bash
